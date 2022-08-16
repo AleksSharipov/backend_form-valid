@@ -17,7 +17,11 @@ const server = app.listen(process.env.PORT || port, (err) => {
   console.log('Server start');
 });
 
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+  }
+});
 
 // const mongoDB = process.env.MONGODB_URI;
 mongoose.connect(process.env.MONGODB_URI)
