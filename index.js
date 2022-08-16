@@ -19,11 +19,8 @@ const server = app.listen(process.env.PORT || port, (err) => {
 
 const io = new Server(server);
 
-const mongoDB = process.env.MONGODB_URI;
-mongoose.connect(mongoDB, {
-  useNewUrlParser: true,
-  // useUnifiedTopology: true
-})
+// const mongoDB = process.env.MONGODB_URI;
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('mongoDB connected')
 
