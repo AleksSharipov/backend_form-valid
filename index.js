@@ -1,6 +1,5 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors';
 
 import { Server } from 'socket.io';
 
@@ -9,6 +8,7 @@ import PhoneSchema from './models/Phone.js';
 const app = express();
 const port = 8000;
 
+// const server = app.listen(process.env.PORT || port, (err) => {
 const server = app.listen(process.env.PORT || port, (err) => {
   if (err) {
     return console.log(err)
@@ -20,6 +20,9 @@ const server = app.listen(process.env.PORT || port, (err) => {
 const io = new Server(server, {
   cors: {
     origin: '*',
+  },
+  headers: {
+    'Access-Control-Allow-Origin': '*',
   }
 });
 
